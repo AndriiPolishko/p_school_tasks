@@ -56,7 +56,10 @@ const a_plus_B = function(A,B) {
                         buffer = undefined
                 }
                 if(aNeg && !bNeg || !aNeg && bNeg) {
-                    temp = +A[i] - B[i] - 1
+                    if(aGrater)
+                        temp = +A[i] - +B[i] - 1;
+                    if(bGrater)
+                        temp = +B[i] - +A[i] - 1;
                     if(temp < 0) {
                         temp = 10 + temp
                         buffer = -1;
@@ -68,7 +71,10 @@ const a_plus_B = function(A,B) {
                 if(aNeg && bNeg || !aNeg && !bNeg)
                     temp = (+A[i] + +B[i]).toString()
                 else if(aNeg && !bNeg || !aNeg && bNeg) {
-                    temp = +A[i] - +B[i]
+                    if(aGrater)
+                        temp = +A[i] - +B[i];
+                    if(bGrater)
+                        temp = +B[i] - +A[i];
                     if(temp < 0) {
                         temp = 10 + temp
                         buffer = -1;
@@ -88,5 +94,5 @@ const a_plus_B = function(A,B) {
     return res;
 }
 
-console.log(a_plus_B("1236","-89"))
+console.log(a_plus_B("8090","-1236"))
 
